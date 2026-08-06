@@ -147,3 +147,12 @@ body {
 .scroll-line {
   animation: scrollPulse 2.4s ease-in-out infinite;
 }
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marqueeScroll 40s linear infinite;
+}
