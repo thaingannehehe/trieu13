@@ -100,46 +100,42 @@ const MEN_SERVICES: ServiceGroup[] = [
 function ServiceColumn({ label, groups }: { label: string; groups: ServiceGroup[] }) {
   return (
     <div>
-      <div className="mb-8 flex items-center justify-between border-b border-[#2a221c]/20 pb-4">
-        <h3
-          className="text-[13px] uppercase tracking-[0.28em] text-[#2a221c]"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          {label}
-        </h3>
-        <span className="h-px w-12 bg-[#c9a96e]/70" aria-hidden="true" />
-      </div>
+      <h3
+        className="mb-10 text-[28px] tracking-tight text-[#2a221c] md:mb-12 md:text-[32px]"
+        style={{ fontFamily: "'Newsreader', serif", fontWeight: 500 }}
+      >
+        {label}
+      </h3>
 
-      <div>
-        {groups.map((group) => (
-          <div key={group.title} className="border-b border-[#2a221c]/10 pb-8 first:pt-0 last:border-b-0 last:pb-0 md:pb-10">
-            <h4
-              className="mb-4 text-[11px] uppercase tracking-[0.18em] text-[#7a6b5d]"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              {group.title}
-            </h4>
-            <div className="divide-y divide-[#2a221c]/10">
-              {group.services.map((service) => (
-                <div key={service.name} className="flex items-baseline justify-between gap-6 py-3 first:pt-0 last:pb-0">
-                  <span
-                    className="min-w-0 text-[17px] leading-[1.4] text-[#2a221c] md:text-[18px]"
-                    style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
-                  >
-                    {service.name}
-                  </span>
-                  <span
-                    className="shrink-0 text-right text-[12px] font-medium tracking-[-0.02em] text-[#2a221c] md:text-[13px]"
-                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                  >
-                    {service.price}
-                  </span>
-                </div>
-              ))}
-            </div>
+      {groups.map((group) => (
+        <div key={group.title} className="mb-10 last:mb-0 md:mb-12">
+          <h4
+            className="mb-5 text-[11px] uppercase tracking-[0.22em] text-[#7a6b5d]"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            {group.title}
+          </h4>
+          <div className="divide-y divide-[#2a221c]/8">
+            {group.services.map((service) => (
+              <div key={service.name} className="flex items-baseline gap-3 py-2.5 first:pt-0">
+                <span
+                  className="min-w-0 text-[16px] leading-[1.5] text-[#2a221c] md:text-[17px]"
+                  style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
+                >
+                  {service.name}
+                </span>
+                <span className="h-px flex-1 translate-y-[-3px] border-b border-dotted border-[#2a221c]/25" aria-hidden="true" />
+                <span
+                  className="shrink-0 text-right text-[13px] font-medium tracking-[-0.01em] text-[#2a221c] md:text-[14px]"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  {service.price}
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -147,7 +143,7 @@ function ServiceColumn({ label, groups }: { label: string; groups: ServiceGroup[
 export default function ServicesPricing() {
   return (
     <section aria-label="Services and pricing" className="bg-[#FAF8F5] px-6 py-16 md:py-24">
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1100px]">
         <div className="mb-12 flex flex-col gap-3 md:mb-16">
           <span
             className="text-[11px] uppercase tracking-[0.3em] text-[#7a6b5d]"
@@ -169,7 +165,7 @@ export default function ServicesPricing() {
           </p>
         </div>
 
-        <div className="grid gap-14 md:grid-cols-2 md:gap-16 lg:gap-24">
+        <div className="grid gap-14 md:grid-cols-2 md:gap-16 lg:gap-20">
           <ServiceColumn label="Nữ" groups={WOMEN_SERVICES} />
           <ServiceColumn label="Nam" groups={MEN_SERVICES} />
         </div>
