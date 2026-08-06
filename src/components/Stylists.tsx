@@ -1,23 +1,43 @@
 const STYLISTS = [
   {
-    name: 'Triệu Thị Mỹ Dung',
-    role: 'Giám Đốc Sáng Lập & Nhà Tạo Mẫu Trưởng',
-    img: 'https://images.pexels.com/photos/29852852/pexels-photo-29852852.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    name: 'Triệu Mỹ Dung',
+    role: 'Creative Director',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017643/1_1_wvbsxs.jpg',
   },
   {
-    name: 'Nguyễn Thanh Hằng',
-    role: 'Chuyên Gia Nhuộm & Màu Tóc',
-    img: 'https://images.pexels.com/photos/13801472/pexels-photo-13801472.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    name: 'Thanh Hằng',
+    role: 'Chuyên Gia Nhuộm Màu',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017643/1_4_pc8okp.jpg',
   },
   {
-    name: 'Lê Hoàng Anh',
-    role: 'Nhà Tạo Mẫu Cắt Tóc',
-    img: 'https://images.pexels.com/photos/30004325/pexels-photo-30004325.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    name: 'Hoàng Anh',
+    role: 'Chuyên Gia Tóc Layer',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_2_j8pfn8.jpg',
   },
   {
-    name: 'Trần Bảo Trân',
-    role: 'Chuyên Gia Uốn & Phục Hồi Tóc',
-    img: 'https://images.pexels.com/photos/30198184/pexels-photo-30198184.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    name: 'Bảo Trân',
+    role: 'Chuyên Gia Uốn & Phục Hồi',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_3_zd0tau.jpg',
+  },
+  {
+    name: 'Kim Ngân',
+    role: 'Chuyên Gia Tóc Bob',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_7_utvsma.jpg',
+  },
+  {
+    name: 'Ngọc Ánh',
+    role: 'Chuyên Gia Tóc Ngắn',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_6_ybbgge.jpg',
+  },
+  {
+    name: 'Mỹ Linh',
+    role: 'Chuyên Gia Balayage',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017646/1_12_b70tlb.jpg',
+  },
+  {
+    name: 'Thu Trang',
+    role: 'Chuyên Gia Nối Tóc',
+    img: 'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017646/1_5_ivdfvn.jpg',
   },
 ];
 
@@ -33,7 +53,7 @@ export default function Stylists() {
             className="text-[11px] uppercase tracking-[0.3em] text-[#7a6b5d]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
- Đội Ngũ
+            Đội Ngũ
           </span>
           <h2
             className="text-[32px] leading-[1.1] tracking-tight text-[#2a221c] md:text-[44px]"
@@ -43,35 +63,29 @@ export default function Stylists() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
-          {STYLISTS.map((s) => (
-            <div key={s.name} className="flex flex-col gap-4">
-              <div className="aspect-[3/4] overflow-hidden rounded-sm bg-[#f0ebe2]">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:gap-x-8 md:gap-y-16">
+          {STYLISTS.map((stylist) => (
+            <article key={stylist.name} className="group cursor-pointer">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl bg-[#f0ebe2]">
                 <img
-                  src={s.img}
-                  alt={s.name}
-                  className="h-full w-full object-cover"
+                  src={stylist.img}
+                  alt={stylist.name}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
-              <h3
-                className="text-[20px] text-[#2a221c]"
-                style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
-              >
-                {s.name}
-              </h3>
               <p
-                className="text-[12px] uppercase tracking-[0.15em] text-[#7a6b5d]"
+                className="mt-5 text-[11px] uppercase tracking-[0.2em] text-[#8b5e3c] md:text-[12px]"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                {s.role}
+                {stylist.role}
               </p>
-              <p
-                className="text-[13px] leading-[1.7] text-[#7a6b5d]"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+              <h3
+                className="mt-2 text-[32px] leading-[1.05] tracking-tight text-[#2a221c] md:text-[38px]"
+                style={{ fontFamily: "'Newsreader', serif", fontWeight: 500 }}
               >
-                Đặt ra tiêu chuẩn cao nhất cho từng kiểu tóc, mang đến trải nghiệm hoàn hảo cho mỗi khách hàng.
-              </p>
-            </div>
+                {stylist.name}
+              </h3>
+            </article>
           ))}
         </div>
       </div>
