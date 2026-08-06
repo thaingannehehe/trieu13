@@ -29,37 +29,24 @@ export default function HairGallery() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    const grid = gridRef.current;
-    if (!section || !grid) return;
+    if (!section) return;
 
     const ctx = gsap.context(() => {
-      gsap.from(section, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 85%',
-          once: true,
-        },
-      });
-
-      const cards = grid.querySelectorAll('.gallery-card');
-      if (cards.length > 0) {
-        gsap.from(cards, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
           ease: 'power3.out',
-          stagger: 0.04,
           scrollTrigger: {
-            trigger: grid,
-            start: 'top 80%',
+            trigger: section,
+            start: 'top 85%',
             once: true,
           },
-        });
-      }
+        },
+      );
     });
     return () => ctx.revert();
   }, []);
@@ -104,7 +91,7 @@ export default function HairGallery() {
               <img
                 src={src}
                 alt={`Mẫu tóc ${i + 1}`}
-                loading="lazy"
+                loading={i < 8 ? 'eager' : 'lazy'}
                 className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
             </div>
