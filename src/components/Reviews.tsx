@@ -20,7 +20,7 @@ export default function Reviews() {
   return (
     <section
       aria-label="Client reviews"
-      className="bg-[#FAF8F5] px-6 py-20 md:py-28"
+      className="bg-[#FAF8F5] px-6 py-16 md:py-24"
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 flex flex-col gap-3 md:mb-16">

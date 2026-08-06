@@ -1,17 +1,74 @@
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const GALLERY_IMAGES = [
-  'https://images.pexels.com/photos/11813865/pexels-photo-11813865.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/17328861/pexels-photo-17328861.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/3065208/pexels-photo-3065208.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/30661047/pexels-photo-30661047.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/3993463/pexels-photo-3993463.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  'https://images.pexels.com/photos/7440132/pexels-photo-7440132.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017643/1_1_wvbsxs.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017643/1_4_pc8okp.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_2_j8pfn8.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_3_zd0tau.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_7_utvsma.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017645/1_6_ybbgge.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017646/1_12_b70tlb.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017646/1_5_ivdfvn.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017647/1_8_atkiac.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017647/1_9_bz3euz.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017647/1_10_g8jaxe.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017647/1_11_mh8fos.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017910/1_15_c9vyqm.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017911/1_14_hsncvv.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017910/1_13_u1zqdz.jpg',
+  'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017912/1_16_wclep5.jpg',
 ];
 
 export default function HairGallery() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const grid = gridRef.current;
+    if (!section || !grid) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+          once: true,
+        },
+      });
+
+      const cards = grid.querySelectorAll('.gallery-card');
+      if (cards.length > 0) {
+        gsap.from(cards, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: 'power3.out',
+          stagger: 0.04,
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 80%',
+            once: true,
+          },
+        });
+      }
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Hair gallery"
-      className="bg-[#FAF8F5] px-6 py-20 md:py-28"
+      className="bg-[#FAF8F5] px-6 pt-12 pb-16 md:pt-16 md:pb-24"
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 flex flex-col gap-3 md:mb-16">
@@ -27,18 +84,28 @@ export default function HairGallery() {
           >
             Bộ Sưu Tập Tóc Đẹp
           </h2>
+          <p
+            className="max-w-[480px] text-[14px] leading-[1.8] text-[#7a6b5d] md:text-[15px]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Một tuyển tập những kiểu tóc được thực hiện tại salon — từ những đường cắt tỉa tinh tế đến những phối màu đa chiều, mỗi hình ảnh là một câu chuyện hoàn chỉnh.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6"
+        >
           {GALLERY_IMAGES.map((src, i) => (
             <div
               key={i}
-              className="aspect-[3/4] overflow-hidden rounded-sm bg-[#f0ebe2]"
+              className="gallery-card group aspect-[3/4] overflow-hidden rounded-xl bg-[#f0ebe2] shadow-[0_2px_12px_rgba(42,34,28,0.06)] transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(42,34,28,0.12)]"
             >
               <img
                 src={src}
                 alt={`Mẫu tóc ${i + 1}`}
-                className="h-full w-full object-cover"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
             </div>
           ))}
