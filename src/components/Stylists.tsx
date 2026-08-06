@@ -63,7 +63,10 @@ export default function Stylists() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:gap-x-8 md:gap-y-16">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          style={{ columnGap: '32px', rowGap: '56px' }}
+        >
           {STYLISTS.map((stylist) => (
             <article key={stylist.name} className="group cursor-pointer">
               <div className="aspect-[4/5] overflow-hidden rounded-xl bg-[#f0ebe2]">
