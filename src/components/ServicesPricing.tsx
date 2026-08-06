@@ -1,25 +1,159 @@
-const SERVICES = [
-  { name: 'Cắt Tóc & Tỉa Lông', price: '350.000₫', desc: 'Cắt tỉa theo khuôn mặt và phong cách cá nhân.' },
-  { name: 'Nhuộm Tóc Đơn Sắc', price: '850.000₫', desc: 'Tư vấn màu sắc và nhuộm chuyên nghiệp.' },
-  { name: 'Uốn Tóc Nước Nóng', price: '1.200.000₫', desc: 'Uốn lơi, uốn toàn bộ, tạo phom tự nhiên.' },
-  { name: 'Liệu Trình Chăm Sóc Tóc', price: '650.000₫', desc: 'Phục hồi tóc hư tổn, cung cấp dưỡng chất.' },
-  { name: 'Tẩy & Ombré', price: '1.800.000₫', desc: 'Tẩy an toàn, tạo hiệu ứng màu đa chiều.' },
-  { name: 'Làm Tóc Cưới', price: '1.500.000₫', desc: 'Tạo kiểu tóc cô dâu, kèm thử nghiệm trước.' },
+type Service = {
+  name: string;
+  price: string;
+};
+
+type ServiceGroup = {
+  title: string;
+  services: Service[];
+};
+
+const WOMEN_SERVICES: ServiceGroup[] = [
+  {
+    title: 'Cắt - Gội - Tạo Kiểu - Mask',
+    services: [
+      { name: 'Cắt', price: '100.000đ' },
+      { name: 'Cắt mái', price: '20.000đ' },
+      { name: 'Kẹp', price: '40.000đ' },
+      { name: 'Gội (Lạnh / Nóng)', price: '90.000đ - 120.000đ' },
+      { name: 'Gội đầu cao cấp', price: '150.000đ' },
+      { name: 'Gội thảo dược', price: '120.000đ' },
+      { name: 'Đắp mặt nạ', price: '50.000đ' },
+    ],
+  },
+  {
+    title: 'Uốn - Duỗi',
+    services: [
+      { name: 'Uốn (Tóc ngắn - dài)', price: '850.000đ - 900.000đ' },
+      { name: 'Uốn phục hồi', price: '1.200.000đ' },
+      { name: 'Duỗi (Tóc ngắn - dài)', price: '850.000đ - 900.000đ' },
+      { name: 'Duỗi phục hồi', price: '1.200.000đ' },
+    ],
+  },
+  {
+    title: 'Nhuộm - Tẩy - Highlight - Balayage',
+    services: [
+      { name: 'Nhuộm chân tóc (Tối đa 3cm)', price: '400.000đ' },
+      { name: 'Nhuộm (Tóc ngắn - dài)', price: '850.000đ - 900.000đ' },
+      { name: 'Nhuộm phục hồi', price: '1.200.000đ' },
+      { name: 'Nhuộm màu tẩy', price: '1.500.000đ - 1.800.000đ' },
+      { name: 'Nhuộm Highlight', price: '200.000đ - 700.000đ' },
+      { name: 'Nhuộm Balayage', price: '2.500.000đ' },
+    ],
+  },
+  {
+    title: 'Các Dịch Vụ Hóa Chất Khác',
+    services: [
+      { name: 'Bấm tóc', price: '250.000đ' },
+      { name: 'Tạo phồng chân tóc', price: '200.000đ' },
+      { name: 'Bấm + Tạo phồng chân tóc', price: '300.000đ' },
+    ],
+  },
+  {
+    title: 'Phục Hồi',
+    services: [
+      { name: 'Hấp dầu (Tóc ngắn - dài)', price: '280.000đ - 300.000đ' },
+      { name: 'Tái tạo (Tóc ngắn - dài)', price: '650.000đ - 700.000đ' },
+    ],
+  },
+  {
+    title: 'Trang Điểm',
+    services: [
+      { name: 'Trang điểm', price: '200.000đ' },
+      { name: 'Trang điểm + Tạo mẫu tóc', price: '250.000đ' },
+    ],
+  },
 ];
+
+const MEN_SERVICES: ServiceGroup[] = [
+  {
+    title: 'Cắt Tóc Nam',
+    services: [{ name: 'Cắt', price: '80.000đ' }],
+  },
+  {
+    title: 'Uốn Tóc Nam',
+    services: [
+      { name: 'Uốn', price: '280.000đ' },
+      { name: 'Uốn Wavy', price: '280.000đ' },
+      { name: 'Uốn Ruffled', price: '350.000đ' },
+      { name: 'Uốn Con Sâu', price: '350.000đ' },
+      { name: 'Uốn Premlock', price: '500.000đ' },
+      { name: 'Hair Tattoo', price: '80.000đ' },
+    ],
+  },
+  {
+    title: 'Nhuộm - Tẩy - Highlight - Balayage',
+    services: [
+      { name: 'Nhuộm', price: '400.000đ' },
+      { name: 'Nhuộm màu thời trang', price: '700.000đ' },
+    ],
+  },
+  {
+    title: 'Combo',
+    services: [
+      { name: 'Cắt - Xả - Cạo mặt', price: '100.000đ' },
+      { name: 'Cắt - Gội - Cạo mặt', price: '200.000đ' },
+    ],
+  },
+];
+
+function ServiceColumn({ label, groups }: { label: string; groups: ServiceGroup[] }) {
+  return (
+    <div>
+      <div className="mb-8 flex items-center justify-between border-b border-[#2a221c]/20 pb-4">
+        <h3
+          className="text-[13px] uppercase tracking-[0.28em] text-[#2a221c]"
+          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+        >
+          {label}
+        </h3>
+        <span className="h-px w-12 bg-[#c9a96e]/70" aria-hidden="true" />
+      </div>
+
+      <div>
+        {groups.map((group) => (
+          <div key={group.title} className="border-b border-[#2a221c]/10 pb-8 first:pt-0 last:border-b-0 last:pb-0 md:pb-10">
+            <h4
+              className="mb-4 text-[11px] uppercase tracking-[0.18em] text-[#7a6b5d]"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {group.title}
+            </h4>
+            <div className="divide-y divide-[#2a221c]/10">
+              {group.services.map((service) => (
+                <div key={service.name} className="flex items-baseline justify-between gap-6 py-3 first:pt-0 last:pb-0">
+                  <span
+                    className="min-w-0 text-[17px] leading-[1.4] text-[#2a221c] md:text-[18px]"
+                    style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
+                  >
+                    {service.name}
+                  </span>
+                  <span
+                    className="shrink-0 text-right text-[12px] font-medium tracking-[-0.02em] text-[#2a221c] md:text-[13px]"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {service.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ServicesPricing() {
   return (
-    <section
-      aria-label="Services and pricing"
-      className="bg-[#FAF8F5] px-6 py-16 md:py-24"
-    >
+    <section aria-label="Services and pricing" className="bg-[#FAF8F5] px-6 py-16 md:py-24">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 flex flex-col gap-3 md:mb-16">
           <span
             className="text-[11px] uppercase tracking-[0.3em] text-[#7a6b5d]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            Bảng Giá
+            Bảng Giá · Full Menu
           </span>
           <h2
             className="text-[32px] leading-[1.1] tracking-tight text-[#2a221c] md:text-[44px]"
@@ -27,36 +161,17 @@ export default function ServicesPricing() {
           >
             Dịch Vụ & Bảng Giá
           </h2>
+          <p
+            className="max-w-[500px] text-[14px] leading-[1.8] text-[#7a6b5d] md:text-[15px]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Những dịch vụ được thực hiện với sự chăm chút trong từng chi tiết, dành riêng cho chất tóc và phong cách của bạn.
+          </p>
         </div>
 
-        <div className="divide-y divide-[#2a221c]/10 border-y border-[#2a221c]/10">
-          {SERVICES.map((s) => (
-            <div
-              key={s.name}
-              className="flex flex-col gap-2 py-6 md:flex-row md:items-baseline md:justify-between md:gap-8"
-            >
-              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
-                <h3
-                  className="text-[18px] text-[#2a221c] md:text-[22px]"
-                  style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
-                >
-                  {s.name}
-                </h3>
-                <p
-                  className="text-[13px] text-[#7a6b5d]"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  {s.desc}
-                </p>
-              </div>
-              <span
-                className="text-[16px] text-[#2a221c] md:text-[18px] md:flex-none"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                {s.price}
-              </span>
-            </div>
-          ))}
+        <div className="grid gap-14 md:grid-cols-2 md:gap-16 lg:gap-24">
+          <ServiceColumn label="Nữ" groups={WOMEN_SERVICES} />
+          <ServiceColumn label="Nam" groups={MEN_SERVICES} />
         </div>
       </div>
     </section>
