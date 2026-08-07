@@ -41,7 +41,7 @@ function App() {
     if (!titleEl || !overlayEl) return;
 
     const content = heroRef.current?.querySelectorAll(
-      '#hero-content .hero-content-item'
+      '#hero-content .hero-content-item, #hero-title-badge'
     );
     const scroll = heroRef.current?.querySelector('#hero-scroll');
 

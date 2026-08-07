@@ -60,12 +60,13 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tóc Đẹp
           </h1>
           <div
-            className="mt-3 inline-flex flex-nowrap items-center gap-2 w-max max-w-none whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] text-white backdrop-blur-sm"
+            id="hero-title-badge"
+            className="hero-content-item mt-3 inline-flex flex-nowrap items-center gap-1 w-max max-w-none whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[8px] text-white backdrop-blur-sm md:gap-2 md:px-4 md:py-2 md:text-[10px]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
             aria-label="Google 4.9 trên 5, 1278 đánh giá"
           >
             <span className="font-medium tracking-[0.08em]">GOOGLE</span>
-            <span className="inline-flex flex-nowrap gap-0.5 text-[12px] text-[#c9a96e]" aria-hidden="true">
+            <span className="inline-flex flex-nowrap gap-0.5 text-[10px] text-[#c9a96e] md:text-[12px]" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, index) => (
                 <span key={index}>★</span>
               ))}
@@ -96,16 +97,16 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tiêu chuẩn mới trong nghệ thuật tạo mẫu tóc. Cắt tỉa chính xác, màu tóc đa chiều, và các liệu trình chăm sóc được thiết kế riêng cho từng khách hàng — bởi những nhà tạo mẫu coi mỗi mái tóc như một tác phẩm.
           </p>
 
-          <div className="hero-content-item pointer-events-auto flex items-center gap-4">
+          <div className="hero-content-item pointer-events-auto flex w-full items-center gap-3 md:w-auto md:gap-4">
             <button
-              className="whitespace-nowrap text-[#1c1612] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95"
+              className="min-w-0 flex-1 whitespace-nowrap text-[#1c1612] bg-white px-2 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[10px] font-medium active:scale-95 md:flex-none md:px-8 md:text-[12px]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Đặt Lịch Hẹn
             </button>
             <a
               href="#services-pricing"
-              className="whitespace-nowrap border border-white/60 px-8 py-4 text-[12px] font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:border-white hover:bg-white/10 active:scale-95"
+              className="min-w-0 flex-1 whitespace-nowrap border border-white/60 px-2 py-4 text-[10px] font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:border-white hover:bg-white/10 active:scale-95 md:flex-none md:px-8 md:text-[12px]"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Dịch Vụ &amp; Giá
