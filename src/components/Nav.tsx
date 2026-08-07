@@ -1,4 +1,5 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { Menu, X } from 'lucide-react';
 
 const links = [
@@ -9,23 +10,49 @@ const links = [
   { label: 'LIÊN HỆ', href: '#lien-he' }
 ];
 
-/**
- * Nav is always mounted. Its initial hidden state (opacity:0, y:-24,
- * pointer-events:none) is set imperatively by App.tsx via GSAP before first
- * paint, and it is revealed together with the hero content from a single
- * GSAP timeline once the IntroOverlay completes.
- */
 const Nav = forwardRef<HTMLElement>((_props, ref) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navElementRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const desktopMedia = window.matchMedia('(min-width: 768px)');
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (!desktopMedia.matches || !navElementRef.current) {
+        lastScrollY = window.scrollY;
+        return;
+      }
+
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - lastScrollY) < 8) return;
+
+      gsap.to(navElementRef.current, {
+        y: currentScrollY > lastScrollY && currentScrollY > 8 ? -100 : 0,
+        duration: 0.35,
+        ease: 'power2.out',
+        overwrite: true,
+      });
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const setNavRef = (node: HTMLElement | null) => {
+    navElementRef.current = node;
+    if (typeof ref === 'function') ref(node);
+    else if (ref) ref.current = node;
+  };
 
   return (
     <>
       <nav
-        ref={ref}
+        ref={setNavRef}
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
         className="fixed top-0 left-0 w-full z-[100] flex justify-between items-center px-5 md:px-16 py-6 bg-[#1c1612]/80 backdrop-blur-xl border-b border-white/10"
       >
-        {/* Logo */}
         <div>
           <a
             href="#"
@@ -36,7 +63,6 @@ const Nav = forwardRef<HTMLElement>((_props, ref) => {
           </a>
         </div>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-2">
           {links.map((link) => (
             <a
@@ -49,14 +75,12 @@ const Nav = forwardRef<HTMLElement>((_props, ref) => {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="hidden md:block">
           <button className="text-[#1c1612] bg-white px-6 py-3 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95">
             ĐẶT LỊCH
           </button>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-white"
           onClick={() => setMobileOpen((v) => !v)}
@@ -66,9 +90,8 @@ const Nav = forwardRef<HTMLElement>((_props, ref) => {
         </button>
       </nav>
 
-      {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#1c1612]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pt-24">
+        <div className="fixed inset-0 z-[99] bg-[#1c1612] flex flex-col items-center justify-center gap-8 pt-24">
           {links.map((link) => (
             <a
               key={link.label}
@@ -80,12 +103,6 @@ const Nav = forwardRef<HTMLElement>((_props, ref) => {
               {link.label}
             </a>
           ))}
-          <button
-            className="mt-4 text-[#1c1612] bg-white px-8 py-4 uppercase tracking-[0.15em] text-[12px] font-medium"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            ĐẶT LỊCH
-          </button>
         </div>
       )}
     </>

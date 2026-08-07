@@ -1,8 +1,4 @@
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
 
 const GALLERY_IMAGES = [
   'https://res.cloudinary.com/o5ikznlv/image/upload/q_auto/f_auto/v1786017643/1_1_wvbsxs.jpg',
@@ -26,30 +22,6 @@ const GALLERY_IMAGES = [
 export default function HairGallery() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            once: true,
-          },
-        },
-      );
-    });
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section

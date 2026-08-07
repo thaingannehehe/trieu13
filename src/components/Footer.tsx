@@ -31,9 +31,10 @@ export default function Footer() {
               className="text-[13px] leading-[1.8] text-white/60"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              123 Nguyễn Văn Cừ<br />
-              Quận 1, TP. Hồ Chí Minh<br />
-              0909 123 456<br />
+              9B, Đường Lái Thiêu 51<br />
+              Thuận An, Bình Dương<br />
+              Lái Thiêu, Vietnam<br />
+              094 277 70 09<br />
               lienhe@trieutocdep.vn
             </p>
           </div>
@@ -50,8 +51,8 @@ export default function Footer() {
               className="text-[13px] leading-[1.8] text-white/60"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Thứ 2 — Thứ 6: 9:00 — 20:00<br />
-              Thứ 7: 9:00 — 18:00<br />
+              08:00 – 20:00 (Thứ Hai – Thứ Bảy)<br />
+              Chủ Nhật: Nghỉ
               Chủ Nhật: Nghỉ
             </p>
           </div>
