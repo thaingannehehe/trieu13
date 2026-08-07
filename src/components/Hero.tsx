@@ -60,6 +60,7 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tóc Đẹp
           </h1>
           <div
+            id="hero-review-badge"
             className="mt-3 inline-flex flex-nowrap items-center gap-2 w-max max-w-none whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] text-white backdrop-blur-sm"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
             aria-label="Google 4.9 trên 5, 1278 đánh giá"
@@ -96,16 +97,16 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tiêu chuẩn mới trong nghệ thuật tạo mẫu tóc. Cắt tỉa chính xác, màu tóc đa chiều, và các liệu trình chăm sóc được thiết kế riêng cho từng khách hàng — bởi những nhà tạo mẫu coi mỗi mái tóc như một tác phẩm.
           </p>
 
-          <div className="hero-content-item pointer-events-auto flex items-center gap-4">
+          <div className="hero-content-item pointer-events-auto flex items-center gap-2 md:gap-4">
             <button
-              className="whitespace-nowrap text-[#1c1612] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95"
+              className="whitespace-nowrap text-[#1c1612] bg-white px-5 md:px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.12em] md:tracking-[0.15em] text-[11px] md:text-[12px] font-medium active:scale-95"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Đặt Lịch Hẹn
             </button>
             <a
               href="#services-pricing"
-              className="whitespace-nowrap border border-white/60 px-8 py-4 text-[12px] font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:border-white hover:bg-white/10 active:scale-95"
+              className="whitespace-nowrap border border-white/60 px-5 md:px-8 py-4 text-[11px] md:text-[12px] font-medium uppercase tracking-[0.12em] md:tracking-[0.15em] text-white transition-colors duration-300 hover:border-white hover:bg-white/10 active:scale-95"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Dịch Vụ &amp; Giá

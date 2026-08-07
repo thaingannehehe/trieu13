@@ -43,6 +43,7 @@ function App() {
     const content = heroRef.current?.querySelectorAll(
       '#hero-content .hero-content-item'
     );
+    const badge = heroRef.current?.querySelector('#hero-review-badge');
     const scroll = heroRef.current?.querySelector('#hero-scroll');
 
     // ── Initial states (before first paint — no flash) ──
@@ -58,6 +59,9 @@ function App() {
     }
     if (content && content.length > 0) {
       gsap.set(content, { opacity: 0, y: 24 });
+    }
+    if (badge) {
+      gsap.set(badge, { opacity: 0, y: 24 });
     }
     if (scroll) {
       gsap.set(scroll, { opacity: 0 });
@@ -181,6 +185,15 @@ function App() {
             duration: 0.9,
             ease: 'power4.out',
           },
+          heroUiStart
+        );
+      }
+
+      if (badge) {
+        master.fromTo(
+          badge,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out' },
           heroUiStart
         );
       }
