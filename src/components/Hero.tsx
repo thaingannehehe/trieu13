@@ -59,6 +59,21 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             <br />
             Tóc Đẹp
           </h1>
+          <div
+            className="mt-6 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#d8d2c9]/90 px-4 py-2 text-[10px] text-[#2a221c] shadow-[0_4px_16px_rgba(28,22,18,0.12)]"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            aria-label="Google 4.8 trên 5, 1279 đánh giá"
+          >
+            <span className="font-medium tracking-[0.08em]">GOOGLE</span>
+            <span className="flex gap-0.5 text-[12px] text-[#c9a96e]" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <span key={index}>★</span>
+              ))}
+            </span>
+            <span className="font-medium">4.8</span>
+            <span className="text-[#7a6b5d]">·</span>
+            <span>1279 đánh giá</span>
+          </div>
         </div>
       </div>
 
@@ -81,13 +96,20 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tiêu chuẩn mới trong nghệ thuật tạo mẫu tóc. Cắt tỉa chính xác, màu tóc đa chiều, và các liệu trình chăm sóc được thiết kế riêng cho từng khách hàng — bởi những nhà tạo mẫu coi mỗi mái tóc như một tác phẩm.
           </p>
 
-          <div className="hero-content-item pointer-events-auto">
+          <div className="hero-content-item pointer-events-auto flex items-center gap-4">
             <button
-              className="text-[#1c1612] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95"
+              className="whitespace-nowrap text-[#1c1612] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Đặt Lịch Hẹn
             </button>
+            <a
+              href="#services-pricing"
+              className="whitespace-nowrap border border-white/60 px-8 py-4 text-[12px] font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:border-white hover:bg-white/10 active:scale-95"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Dịch Vụ &amp; Giá
+            </a>
           </div>
         </div>
       </div>

@@ -142,7 +142,7 @@ function ServiceColumn({ label, groups }: { label: string; groups: ServiceGroup[
 
 export default function ServicesPricing() {
   return (
-    <section aria-label="Services and pricing" className="bg-[#FAF8F5] px-6 py-16 md:py-24">
+    <section id="services-pricing" aria-label="Services and pricing" className="bg-[#FAF8F5] px-6 py-16 md:py-24">
       <div className="mx-auto max-w-[1100px]">
         <div className="mb-12 flex flex-col gap-3 md:mb-16">
           <span
