@@ -54,6 +54,7 @@ export default function HairGallery() {
   return (
     <section
       ref={sectionRef}
+      id="lookbook"
       aria-label="Hair gallery"
       className="bg-[#FAF8F5] px-6 pt-12 pb-16 md:pt-16 md:pb-24"
     >

@@ -44,6 +44,7 @@ const STYLISTS = [
 export default function Stylists() {
   return (
     <section
+      id="stylist"
       aria-label="Meet our stylists"
       className="bg-[#FAF8F5] px-6 py-16 md:py-24"
     >

@@ -99,6 +99,7 @@ export default function MapSection() {
   return (
     <section
       ref={sectionRef}
+      id="lien-he"
       aria-label="Salon location"
       className="bg-[#FAF8F5] px-6 py-16 md:py-24"
     >
@@ -108,13 +109,13 @@ export default function MapSection() {
             className="text-[11px] uppercase tracking-[0.3em] text-[#7a6b5d]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            Location
+            Địa điểm
           </span>
           <h2
             className="text-[32px] leading-[1.1] tracking-tight text-[#2a221c] md:text-[44px]"
             style={{ fontFamily: "'Newsreader', serif", fontWeight: 400 }}
           >
-            Visit Our Salon
+            Hãy đến salon của chúng tôi
           </h2>
         </div>
 
@@ -182,7 +183,7 @@ export default function MapSection() {
                 className="group/btn flex items-center justify-center gap-2 rounded-full bg-[#2a221c] px-8 py-4 text-[14px] text-white transition-colors hover:bg-[#3d2f24]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Open in Google Maps
+                Mở bản đồ trong Google Maps
                 <ArrowUpRight
                   size={18}
                   className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"

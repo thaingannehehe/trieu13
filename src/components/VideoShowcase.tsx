@@ -58,6 +58,7 @@ export default function VideoShowcase() {
     <section
       ref={sectionRef}
       aria-label="Video showcase"
+      id="video"
       className="bg-[#FAF8F5] px-6 py-20 md:py-28"
     >
       <div className="mx-auto max-w-[1200px]">
