@@ -74,6 +74,31 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
           className="pl-12 md:pl-20 lg:pl-28 pb-20"
           style={{ maxWidth: '42%', minWidth: 320 }}
         >
+          <div
+            className="hero-content-item mb-6 inline-flex items-center gap-3 rounded-full bg-white/15 px-4 py-2.5 shadow-[0_4px_18px_rgba(0,0,0,0.12)] backdrop-blur-sm"
+            aria-label="Google rating 4.8 from 1279 reviews"
+          >
+            <span
+              className="text-[10px] font-medium uppercase tracking-[0.12em] text-white/90"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Google
+            </span>
+            <span className="flex gap-0.5" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <span key={index} className="text-[14px] leading-none text-[#c9a96e]">
+                  ★
+                </span>
+              ))}
+            </span>
+            <span
+              className="whitespace-nowrap text-[11px] text-white/75"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              4.8 · 1279 Google Reviews
+            </span>
+          </div>
+
           <p
             className="hero-content-item text-white/65 text-[14px] md:text-[15px] leading-[1.8] mb-10"
             style={{ fontFamily: "'Inter', sans-serif" }}
@@ -81,12 +106,22 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tiêu chuẩn mới trong nghệ thuật tạo mẫu tóc. Cắt tỉa chính xác, màu tóc đa chiều, và các liệu trình chăm sóc được thiết kế riêng cho từng khách hàng — bởi những nhà tạo mẫu coi mỗi mái tóc như một tác phẩm.
           </p>
 
-          <div className="hero-content-item pointer-events-auto">
+          <div className="hero-content-item pointer-events-auto flex flex-col gap-4 sm:flex-row sm:items-center">
             <button
               className="text-[#1c1612] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-300 uppercase tracking-[0.15em] text-[12px] font-medium active:scale-95"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Đặt Lịch Hẹn
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                document.getElementById('services-pricing')?.scrollIntoView({ behavior: 'smooth' })
+              }
+              className="border border-white/45 bg-transparent px-8 py-4 text-[12px] font-medium uppercase tracking-[0.15em] text-white transition-colors duration-300 hover:bg-white/12 active:scale-95"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              Dịch Vụ &amp; Giá
             </button>
           </div>
         </div>
