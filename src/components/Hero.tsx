@@ -60,19 +60,19 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tóc Đẹp
           </h1>
           <div
-            className="mt-4 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#d8d2c9]/90 px-3.5 py-1.5 text-[10px] text-[#2a221c] shadow-[0_4px_16px_rgba(28,22,18,0.12)]"
+            className="mt-3 inline-flex flex-nowrap items-center gap-2 w-max max-w-none whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] text-white backdrop-blur-sm"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            aria-label="Google 4.8 trên 5, 1279 đánh giá"
+            aria-label="Google 4.9 trên 5, 1278 đánh giá"
           >
             <span className="font-medium tracking-[0.08em]">GOOGLE</span>
-            <span className="flex gap-0.5 text-[12px] text-[#c9a96e]" aria-hidden="true">
+            <span className="inline-flex flex-nowrap gap-0.5 text-[12px] text-[#c9a96e]" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, index) => (
                 <span key={index}>★</span>
               ))}
             </span>
-            <span className="font-medium">4.8</span>
-            <span className="text-[#7a6b5d]">·</span>
-            <span>1279 đánh giá</span>
+            <span className="font-medium">4.9</span>
+            <span className="text-white/50">·</span>
+            <span>1278 đánh giá</span>
           </div>
         </div>
       </div>

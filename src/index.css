@@ -111,12 +111,12 @@ body {
    up or down. It is a percentage of the Hero section height, so the title
    stays anchored predictably at every viewport size. */
 :root {
-  --hero-title-top: 40%;
+  --hero-title-top: 38%;
 }
 
 @media (max-width: 767px) {
   :root {
-    --hero-title-top: 50%;
+    --hero-title-top: 46%;
   }
 }
 
