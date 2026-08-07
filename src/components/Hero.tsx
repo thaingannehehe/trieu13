@@ -60,7 +60,7 @@ const Hero = forwardRef<HTMLElement>((_props, ref) => {
             Tóc Đẹp
           </h1>
           <div
-            className="mt-4 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#d8d2c9]/90 px-4 py-2 text-[10px] text-[#2a221c] shadow-[0_4px_16px_rgba(28,22,18,0.12)]"
+            className="mt-4 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#d8d2c9]/90 px-4 py-2 text-[15px] text-[#2a221c] shadow-[0_4px_16px_rgba(28,22,18,0.12)]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
             aria-label="Google 4.8 trên 5, 1279 đánh giá"
           >
